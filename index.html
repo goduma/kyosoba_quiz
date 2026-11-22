@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#14382d" />
+    <title>この馬は誰？ — 競走馬クイズ</title>
+    <meta
+      name="description"
+      content="G1馬の写真を見て、4つの選択肢から名前を当てる5問クイズ。"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="page">
+      <header class="brand">
+        <p class="brand-kicker">Racehorse Quiz</p>
+        <h1>この馬は誰？</h1>
+      </header>
+
+      <main class="card" id="app">
+        <section class="screen" id="start-screen">
+          <div class="mark" aria-hidden="true">
+            <svg viewBox="0 0 64 64" class="horseshoe">
+              <path
+                d="M18 22c0-10 6.5-16 14-16s14 6 14 16v16c0 6 3 9 6 9"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="5"
+                stroke-linecap="round"
+              />
+              <path
+                d="M14 46h8M42 46h8"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="5"
+                stroke-linecap="round"
+              />
+            </svg>
+          </div>
+          <p class="lead">
+            G1を勝った馬や、よく知られた馬の写真です。名前を4つから選んでください。5問で成績をまとめます。
+          </p>
+          <ul class="meta">
+            <li>5問</li>
+            <li>4択</li>
+            <li>写真で回答</li>
+          </ul>
+          <p class="record" id="start-record" hidden></p>
+          <button type="button" class="primary" id="start-button">はじめる</button>
+          <button type="button" class="ghost hidden" id="start-clear">記録を消去</button>
+        </section>
+
+        <section class="screen hidden" id="quiz-screen" aria-live="polite">
+          <div class="quiz-head">
+            <p class="progress-label" id="progress-label">1 / 5</p>
+            <div class="dots" id="dots" aria-hidden="true"></div>
+          </div>
+          <figure class="photo-frame">
+            <img id="horse-photo" alt="名前を当てる競走馬の写真" />
+            <figcaption id="photo-credit">Wikimedia Commons</figcaption>
+          </figure>
+          <h2 class="question">この馬の名前は？</h2>
+          <div class="choices" id="choices"></div>
+          <p class="feedback" id="feedback" hidden></p>
+          <button type="button" class="primary hidden" id="next-button">次の問題</button>
+        </section>
+
+        <section class="screen hidden" id="result-screen">
+          <p class="result-kicker">成績</p>
+          <p class="score" id="score-text">0 / 5</p>
+          <p class="result-message" id="result-message"></p>
+          <dl class="stats">
+            <div>
+              <dt>自己ベスト</dt>
+              <dd id="best-score">0 / 5</dd>
+            </div>
+            <div>
+              <dt>平均</dt>
+              <dd id="avg-score">-</dd>
+            </div>
+            <div>
+              <dt>プレイ</dt>
+              <dd id="play-count">0</dd>
+            </div>
+          </dl>
+          <p class="recent" id="recent-scores" hidden></p>
+          <ol class="summary" id="summary"></ol>
+          <details class="credits">
+            <summary>写真の出典</summary>
+            <ul id="credit-list"></ul>
+          </details>
+          <button type="button" class="primary" id="retry-button">もう一度</button>
+          <button type="button" class="ghost" id="home-button">はじめにもどる</button>
+          <button type="button" class="ghost" id="result-clear">記録を消去</button>
+        </section>
+      </main>
+
+      <footer class="footnote">
+        写真は Wikimedia Commons の公開画像です。馬名が写るものは顔のあたりだけを使っています。成績はこの端末に保存されます。
+      </footer>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>
